@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "476001980266",
+    "firebase_url": "https://baybypay.firebaseio.com",
+    "project_id": "baybypay",
+    "storage_bucket": "baybypay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476001980266:android:da62bca289eea01a9e5f13",
+        "android_client_info": {
+          "package_name": "com.depromeet.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476001980266-uoscgu09r4oi4bh5ca2k3i2peaee66jn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.depromeet.android",
+            "certificate_hash": "2a80636e341bdbc519fe1f2cdabc75bdf98da220"
+          }
+        },
+        {
+          "client_id": "476001980266-3td0e4bjlbbf190qcnjrjncb9on4npu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7QzMhFaDJkzbtXuwDprwTl3sW1uQ414U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476001980266-3td0e4bjlbbf190qcnjrjncb9on4npu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
