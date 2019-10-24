@@ -37,7 +37,7 @@
         <activity android:name=".login.LoginActivity">
 
         </activity>
-        <activity android:name=".MainActivity" /> <!-- 카카오톡 메타데이터 -->
+        <activity android:name=".main.MainActivity" /> <!-- 카카오톡 메타데이터 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
