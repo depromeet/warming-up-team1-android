@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
         getHashKey();
     }
 
-
-
     //릴리즈용으로 추후에 변경해야 함
     private void getHashKey(){
         try {                                                        // 패키지이름을 입력해줍니다.
