@@ -79,7 +79,7 @@ public class PopupActivity extends Activity {
         String templateId = "18924";
 
         Map<String, String> templateArgs = new HashMap<>();
-        templateArgs.put("description", "ㅇㅅㅇ");
+        templateArgs.put("description", "티끌모아육아, 공유해요!");
         templateArgs.put("check", checkKey); // key값 넣기
         KakaoLinkService.getInstance().sendCustom(this, templateId, templateArgs, serverCallbackArgs, callback);
     }
