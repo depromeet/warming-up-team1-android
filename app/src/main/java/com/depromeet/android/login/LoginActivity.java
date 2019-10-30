@@ -1,8 +1,6 @@
 package com.depromeet.android.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,10 +8,6 @@ import android.widget.LinearLayout;
 
 import com.depromeet.android.MainActivity;
 import com.depromeet.android.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
-import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -27,7 +21,6 @@ import com.kakao.util.exception.KakaoException;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -35,28 +28,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private LinearLayout btn_custom_login;
     private LoginButton btn_kakao_login;
-    final String TAG = "LoginActivity!!!";
-    private Context mContext;
+    final String TAG = "LoginActivity";
     private SessionCallback callback;
+    private String getLinkKey;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         btn_custom_login = (LinearLayout) findViewById(R.id.btn_custom_login);
         btn_kakao_login = (LoginButton) findViewById(R.id.btn_kakao_login);
 
-        mContext = getApplicationContext();
+        Intent intent = getIntent();
+        getLinkKey = intent.getExtras().getString("check", "");                  //인증 key값
+
         kakaoData();
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                //onClickLogout(); 로그아웃:테스트용
                 btn_kakao_login.performClick();
-
             }
 
         });
@@ -66,6 +58,13 @@ public class LoginActivity extends AppCompatActivity {
      * 카카오톡
      **/
     private void kakaoData() {
+       /* findViewById(R.id.kakaoLogout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickLogout();
+            }
+        });*/
+
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
 
@@ -85,7 +84,18 @@ public class LoginActivity extends AppCompatActivity {
         public void onSessionOpened() {
             Log.e(TAG, "카카오 로그인 성공 ");
             requestMe();
-            handleDeepLink(); //딥링크로 들어온 경우는 바로 메인, 아닌 경우는 popup
+
+            if (getLinkKey.length() == 0) {
+                Intent popupActivity = new Intent(LoginActivity.this, PopupActivity.class);
+                startActivity(popupActivity);
+            } else {
+                Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                mainActivity.putExtra("check",getLinkKey);
+                startActivity(mainActivity);
+            }
+
+
+            return;
         }
 
         @Override
@@ -96,45 +106,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //딥링크처리하는 곳
-    private void handleDeepLink() {
-        FirebaseDynamicLinks.getInstance()
-                .getDynamicLink(getIntent())
-                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
-                    @Override
-                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
-                        //app으로 실행 했을 경우 (deeplink 없는 경우)
-                        if (pendingDynamicLinkData == null) {
-                            Log.d(TAG, "No have dynamic link");
-                            final Intent popupActivity = new Intent(LoginActivity.this, PopupActivity.class);
-                            startActivity(popupActivity);
-                            return;
-                        }
-
-                        //deeplink로 app 넘어 왔을 경우
-                        Uri deepLink = pendingDynamicLinkData.getLink();
-                        Log.d(TAG, "deepLink: " + deepLink);
-                        String segment = deepLink.getLastPathSegment();
-
-                        //uri에 있는 key값 가져오기
-                        switch (segment) {
-                            case "check":
-                                String code = deepLink.getQueryParameter("key");
-                                Log.d(TAG,code);      //임의로 dialog로 key값 띄움
-                                break;
-                        }
-                        Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(mainActivity);
-
-                    }
-                })
-                .addOnFailureListener(this, new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "getDynamicLink:onFailure", e);
-                    }
-                });
-    }
     /**
      * 사용자에 대한 정보를 가져온다
      **/
@@ -166,21 +137,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(MeV2Response result) {
                 Log.e(TAG, "requestMe onSuccess message : " + " ID: " + result.getId() + " Nickname: " + result.getNickname());
-
-
             }
 
         });
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
-            return;
-        }
-
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     /**
@@ -204,6 +163,15 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e(TAG, "카카오 로그아웃 onSuccess");
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 }

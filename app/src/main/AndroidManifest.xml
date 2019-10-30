@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".login.PopupActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@android:style/Theme.Dialog">
+
+        </activity>
 
         <activity android:name=".login.OnboardingActivity" />
         <activity android:name=".login.Splash">
@@ -25,19 +27,23 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
+                    android:host="@string/kakaolink_host"
+                    android:scheme="@string/kakao_scheme" />
+                <!--<data
                     android:host="example.com"
                     android:scheme="https" />
                 <data
                     android:host="example.com"
-                    android:scheme="http" />
+                    android:scheme="http" />-->
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".deeplink.DeepLink"></activity>
-        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.LoginActivity"/>
+
+
         <activity android:name=".MainActivity" /> <!-- 카카오톡 메타데이터 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"

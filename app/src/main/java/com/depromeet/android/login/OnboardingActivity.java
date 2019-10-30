@@ -23,7 +23,12 @@ public class OnboardingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
         final ImageView moveImg = (ImageView) findViewById(R.id.moveImg);
         TextView nextBtn = (TextView) findViewById(R.id.nextBtn);
+        final Intent splashIntent = getIntent();
+        String getLinkKey = splashIntent.getExtras().getString("check","");       //인증 key값
+
         final Intent loginActivity = new Intent(this, LoginActivity.class);
+        loginActivity.putExtra("check",getLinkKey);
+
         final Animation animation = AnimationUtils.loadAnimation(this, R.anim.onboarding_move);
 
 
