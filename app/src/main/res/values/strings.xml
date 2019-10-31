@@ -6,4 +6,7 @@
     <string name="main_outcome">소비</string>
     <string name="main_income">수입</string>
     <string name="main_balance">잔액</string>
+
+    <string name="angle_bracket_left">&lt;</string>
+    <string name="angle_bracket_right">&gt;</string>
 </resources>

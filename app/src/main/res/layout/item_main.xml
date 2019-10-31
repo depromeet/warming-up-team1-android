@@ -3,44 +3,49 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <TextView
+        android:id="@+id/category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="#404040"
-        android:lineSpacingExtra="2sp"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        tools:text="식비"
-        android:id="@+id/textView4"
+        android:lineSpacingExtra="2sp"
+        android:text="식비"
+        android:textColor="#404040"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <FrameLayout
+        android:id="@+id/category_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/parenting_category_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="@drawable/yellow_circle"/>
+        app:layout_constraintTop_toBottomOf="@+id/category_title"/>
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/category_expenditure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="118,000"
-        android:textSize="10sp"
-        android:textColor="#ffc300"
-        android:lineSpacingExtra="2sp"
-        android:gravity="center_horizontal"
         android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="2sp"
+        android:text="118,000"
+        android:textColor="#ffc300"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"/>
+        app:layout_constraintTop_toBottomOf="@+id/category_icon"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
