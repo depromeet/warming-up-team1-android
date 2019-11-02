@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor"
+    android:orientation="vertical"
+    tools:context=".login.OnboardingActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="19dp"
+        android:src="@drawable/onboarding56"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="250dp"
+        android:layout_height="23dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="3sp"
+        android:text="육아에 바쁜 당신을 위한 가계부"
+        android:textColor="#000000"
+        android:textSize="19.5sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="6sp"
+        android:text="정신없는 육아에 항상 시간이 부족한 나, \n
+가계부를 항목별로 쉽고 빠르게 입력하는 방법은?\n티끌모아육아!"
+        android:textColor="#000000"
+
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
+
+        <ImageView
+            android:layout_width="158.5dp"
+            android:layout_height="274.2dp"
+            android:src="@drawable/onboarding176" />
+
+        <ImageView
+            android:id="@+id/moveImg"
+            android:layout_width="83.6dp"
+            android:layout_height="93.1dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginTop="205.8dp"
+            android:src="@drawable/onboarding236" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="46dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/onboarding104"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nextBtn" />
+
+    <TextView
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="29dp"
+        android:fontFamily="@font/nanumbarungothic"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="3sp"
+        android:text="다음"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.385" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

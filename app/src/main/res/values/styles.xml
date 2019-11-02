@@ -8,6 +8,15 @@
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
         <item name="colorPrimaryDark">#e7e7e7</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--No Title Bar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+
+    </style>
+    <style name="Theme.MyDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
 </resources>
