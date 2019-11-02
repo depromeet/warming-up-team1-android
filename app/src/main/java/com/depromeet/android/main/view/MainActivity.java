@@ -1,21 +1,34 @@
 package com.depromeet.android.main.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.DragEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.depromeet.android.R;
 import com.depromeet.android.data.Category;
+import com.depromeet.android.input.InputActivity;
 import com.depromeet.android.main.adapter.MainGridAdapter;
 import com.depromeet.android.main.presenter.MainContract;
 import com.depromeet.android.main.presenter.MainPresenter;
@@ -24,6 +37,8 @@ import java.lang.reflect.Array;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+
+import static com.depromeet.android.util.BundleKey.INPUT_CATEGORY;
 
 public class MainActivity extends AppCompatActivity
         implements MainContract.View {
@@ -54,16 +69,17 @@ public class MainActivity extends AppCompatActivity
 
         getHashKey();
         setUpAdapter();
+        initDragControl();
     }
 
     //릴리즈용으로 추후에 변경해야 함
-    private void getHashKey(){
+    private void getHashKey() {
         try {                                                        // 패키지이름을 입력해줍니다.
             PackageInfo info = getPackageManager().getPackageInfo("com.depromeet.android", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.d("KEY_HASH","key_hash="+ Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                Log.d("KEY_HASH", "key_hash=" + Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -97,6 +113,18 @@ public class MainActivity extends AppCompatActivity
         gridView.setAdapter(adapter);
     }
 
+    private void initDragControl() {
+
+        floatingBtn.setTag("ImageView");
+
+        // Set on touch listener to source dragged view.
+        floatingBtn.setOnTouchListener(new DragDropOnTouchListener());
+
+        // Set on drag listener to target dropped view.
+        //gridView.setOnDragListener(new DragDropOnDragListener(getApplicationContext()));
+
+    }
+
     @Override
     public void toast(String msg) {
 
@@ -104,6 +132,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void startInputActivity(Category category) {
-
+        Intent intent = new Intent(this, InputActivity.class);
+        intent.putExtra(INPUT_CATEGORY, "");
+        startActivityForResult(intent, 201);
     }
 }

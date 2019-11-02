@@ -16,6 +16,7 @@ public class MainGridAdapter extends BaseAdapter
 
     private ArrayList<Category> items;
     private final Context context;
+    private OnItemClickListener itemClickListener;
 
     public MainGridAdapter(Context context) {
         this.context = context;
@@ -44,7 +45,7 @@ public class MainGridAdapter extends BaseAdapter
 
         if(view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_main, null);
-            holder = new MainGridViewHolder(view);
+            holder = new MainGridViewHolder(view, context, itemClickListener);
             view.setTag(holder);
         } else {
             holder = (MainGridViewHolder) view.getTag();
@@ -57,6 +58,11 @@ public class MainGridAdapter extends BaseAdapter
     @Override
     public void notifyAdapter() {
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void setOnClickListener(OnItemClickListener onClickListener) {
+        this.itemClickListener = onClickListener;
     }
 
     @Override
