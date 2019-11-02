@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/input_background"
-    tools:context=".input.InputActivity">
+    tools:context="">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/upload_activity_toolbar"

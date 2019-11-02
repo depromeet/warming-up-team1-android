@@ -62,7 +62,7 @@ public class FragmentFeedPage1 extends Fragment {
         Legend l = chart.getLegend();
         l.setFormSize(10f); // set the size of the legend forms/shapes
         l.setForm(Legend.LegendForm.CIRCLE); // set what type of form/shape should be used
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);//BELOW_CHART_LEFT
+        l.setPosition(Legend.LegendPosition.LEFT_OF_CHART_INSIDE);//BELOW_CHART_LEFT
         l.setTextSize(15f);
         l.setTextColor(Color.BLACK);
 

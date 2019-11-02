@@ -11,8 +11,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.depromeet.android.MainActivity;
 import com.depromeet.android.R;
+import com.depromeet.android.main.view.MainActivity;
 import com.kakao.kakaolink.v2.KakaoLinkResponse;
 import com.kakao.kakaolink.v2.KakaoLinkService;
 import com.kakao.network.ErrorResult;

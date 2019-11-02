@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.depromeet.android.MainActivity;
 import com.depromeet.android.R;
+import com.depromeet.android.main.view.MainActivity;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
