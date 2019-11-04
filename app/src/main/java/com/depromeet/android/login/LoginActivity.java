@@ -5,9 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.depromeet.android.R;
+import com.depromeet.android.login.presenter.LoginContract;
+import com.depromeet.android.login.presenter.LoginPresenter;
 import com.depromeet.android.main.view.MainActivity;
+import com.depromeet.android.util.BaseActivity;
+import com.depromeet.android.util.PreferenceUtils;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
@@ -21,10 +26,7 @@ import com.kakao.util.exception.KakaoException;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     private LinearLayout btn_custom_login;
     private LoginButton btn_kakao_login;
@@ -32,8 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     private SessionCallback callback;
     private String getLinkKey;
 
-    @Override
+    private LoginPresenter presenter;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -41,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_kakao_login = (LoginButton) findViewById(R.id.btn_kakao_login);
 
         Intent intent = getIntent();
-        getLinkKey = intent.getExtras().getString("check", "");                  //인증 key값
+        getLinkKey = intent.getExtras().getString("check", "");      //인증 key값
 
         kakaoData();
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +55,9 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        presenter = new LoginPresenter();
+        presenter.attachView(this);
     }
 
     /**
@@ -68,14 +74,55 @@ public class LoginActivity extends AppCompatActivity {
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
 
-/** 토큰 만료시 갱신을 시켜준다**/
+        /** 토큰 만료시 갱신을 시켜준다**/
         if (Session.getCurrentSession().isOpenable()) {
             Session.getCurrentSession().checkAndImplicitOpen();
         }
 
+        /** PreferenceUtils **/
+        PreferenceUtils.setKakaoToken(Session.getCurrentSession().getTokenInfo().getAccessToken());
+
         Log.e(TAG, "토큰: " + Session.getCurrentSession().getTokenInfo().getAccessToken());
         Log.e(TAG, "토큰 리프레쉬토큰 : " + Session.getCurrentSession().getTokenInfo().getRefreshToken());
         Log.e(TAG, "토큰 파이어데이트 : " + Session.getCurrentSession().getTokenInfo().getRemainingExpireTime());
+    }
+
+    @Override
+    public void toast(String msg) {
+        Runnable r = () -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        this.runOnUiThread(r);
+    }
+
+    @Override
+    public void startMainActivity(int code) {
+        if (getLinkKey.length() == 0) {
+            Intent popupActivity = new Intent(LoginActivity.this, PopupActivity.class);
+            startActivity(popupActivity);
+        } else {
+            Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+            mainActivity.putExtra("check",getLinkKey);
+            startActivity(mainActivity);
+        }
+    }
+
+    @Override
+    public void onUnauthorizedError() {
+        toast("loginActivity/server connect response : Unauthorized Error");
+    }
+
+    @Override
+    public void onForbiddenError() {
+        toast("loginActivity/server connect response : Forbidden Error");
+    }
+
+    @Override
+    public void onNotFoundError() {
+        toast("loginActivity/server connect response : Not Found Error");
+    }
+
+    @Override
+    public void connectFail() {
+        toast("loginActivity/server connect response : Connect Fail");
     }
 
     private class SessionCallback implements ISessionCallback {
@@ -85,15 +132,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.e(TAG, "카카오 로그인 성공 ");
             requestMe();
 
-            if (getLinkKey.length() == 0) {
-                Intent popupActivity = new Intent(LoginActivity.this, PopupActivity.class);
-                startActivity(popupActivity);
-            } else {
-                Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                mainActivity.putExtra("check",getLinkKey);
-                startActivity(mainActivity);
-            }
-
+            presenter.login();
 
             return;
         }
