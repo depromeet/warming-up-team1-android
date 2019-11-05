@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">BabyPay</string>
 
+    <string name="onboarding_title">육아에 바쁜 당신을 위한 가계부</string>
+    <string name="onboarding_subTitle">정신없는 육아에 항상 시간이 부족한 나, \n
+가계부를 항목별로 쉽고 빠르게 입력하는 방법은?\n티끌모아육아!</string>
+
+    <string name="KakaoLogin">Kakaotalk으로 로그인</string>
+
     <string name="main_title">우리집 가계사정</string>
     <string name="main_outcome">소비</string>
     <string name="main_income">수입</string>
@@ -8,4 +14,12 @@
 
     <string name="angle_bracket_left">&lt;</string>
     <string name="angle_bracket_right">&gt;</string>
+
+    <string name="feedpage_title">통계</string>
+    <string name="feedpage_monthIncome">이번달 총 소득</string>
+    <string name="feedpage_outcomeCategory">이번달 지출이 가장 큰항목</string>
+    <string name="feedpage_graph">월별 수입지출 추이</string>
+    <string name="feedpage_list">세부내역</string>
+
+    <string name="feedpage_frag1_graph">월별 수입&amp;지출 추이</string>
 </resources>

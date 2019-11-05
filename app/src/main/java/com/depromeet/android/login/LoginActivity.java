@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
             @Override
             public void onClick(View view) {
-                btn_kakao_login.performClick();
+               btn_kakao_login.performClick();
             }
 
         });

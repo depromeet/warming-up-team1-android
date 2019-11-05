@@ -38,7 +38,7 @@
             android:layout_marginStart="32dp"
             android:fontFamily="@font/nanumbarungothic"
             android:lineSpacingExtra="3sp"
-            android:text="통계"
+            android:text="@string/feedpage_title"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -56,93 +56,114 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="207dp"
             android:layout_height="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="69dp"
-            android:layout_marginEnd="137dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/onboarding56"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="@+id/feedpageTotal3" />
 
         <TextView
-            android:id="@+id/feedpageTotal"
+            android:id="@+id/feedpageTotal1"
             android:layout_width="203dp"
-            android:layout_height="49dp"
+            android:layout_height="25dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="141dp"
-            android:layout_marginBottom="104dp"
             android:fontFamily="@font/nanumbarungothic"
-            android:text="2019년 10월\n총 32,000원 소비했어요"
+            android:text="2019년 10월"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:autoSizeTextType="uniform" />
+
+        <TextView
+            android:id="@+id/feedpageTotal2"
+            android:layout_width="96dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/nanumbarungothic"
+            android:text=" 총 32,000"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/feedpageTotal1" />
+
+        <TextView
+            android:id="@+id/feedpageTotal3"
+            android:layout_width="107dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/nanumbarungothic"
+            android:text="원 소비했어요"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/feedpageTotal2"
+            app:layout_constraintTop_toBottomOf="@+id/feedpageTotal1" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="41.7dp"
             android:layout_height="37.2dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="47.5dp"
-            android:layout_marginEnd="87.8dp"
-            android:layout_marginBottom="100.3dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="47dp"
             android:src="@drawable/feedpage289"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/feedpageTotal"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/feedpageTotal1"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/nanumbarungothic"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="1sp"
-            android:text="이번달 총 소득"
+            android:text="@string/feedpage_monthIncome"
             android:textColor="#313131"
             android:textSize="11sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/nanumbarungothic"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="1sp"
-            android:text="이번달 지출이 가장 큰항목"
+            android:text="@string/feedpage_outcomeCategory"
             android:textColor="#313131"
             android:textSize="11sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-            tools:layout_editor_absoluteX="225dp"/>
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="18dp"
             android:background="@drawable/white_round_corner"
             android:gravity="center_vertical"
             android:paddingLeft="66dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <TextView
                 android:id="@+id/feedpageIncome"
@@ -152,21 +173,23 @@
                 android:lineSpacingExtra="2sp"
                 android:text="100,5000원"
                 android:textColor="#313131"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:layout_marginRight="16dp"/>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="156dp"
             android:layout_height="32dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="18dp"
             android:background="@drawable/white_round_corner"
             android:gravity="center_vertical"
             android:paddingLeft="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <TextView
                 android:id="@+id/feedpageCategory"
@@ -175,7 +198,7 @@
                 android:lineSpacingExtra="2sp"
                 android:text="식비"
                 android:textColor="#313131"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/feedpageCategoryExpense"
@@ -185,8 +208,15 @@
                 android:lineSpacingExtra="2sp"
                 android:text="353,000원"
                 android:textColor="#313131"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -198,8 +228,7 @@
         android:layout_marginBottom="398dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.33"
-        app:layout_constraintTop_toBottomOf="@+id/guideline6" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <TextView
         android:id="@+id/feedPageBtn1"
@@ -210,7 +239,7 @@
         android:background="@color/mainColor"
         android:gravity="center"
         android:lineSpacingExtra="8sp"
-        android:text="월별 수입지출 추이"
+        android:text="@string/feedpage_graph"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -226,7 +255,7 @@
         android:background="@drawable/maincolor_solid"
         android:gravity="center"
         android:lineSpacingExtra="8sp"
-        android:text="세부내역"
+        android:text="@string/feedpage_list"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +267,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
