@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                btn_kakao_login.performClick();
+               btn_kakao_login.performClick();
             }
 
         });
