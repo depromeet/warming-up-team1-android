@@ -28,7 +28,7 @@
         android:fontFamily="@font/nanumbarungothic"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="3sp"
-        android:text="육아에 바쁜 당신을 위한 가계부"
+        android:text="@string/onboarding_title"
         android:textColor="#000000"
         android:textSize="19.5sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +43,7 @@
         android:fontFamily="@font/nanumbarungothic"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="6sp"
-        android:text="정신없는 육아에 항상 시간이 부족한 나, \n
-가계부를 항목별로 쉽고 빠르게 입력하는 방법은?\n티끌모아육아!"
+        android:text="@string/onboarding_subTitle"
         android:textColor="#000000"
 
         android:textSize="14sp"
