@@ -17,15 +17,25 @@ import com.depromeet.android.login.presenter.PopupContract;
 import com.depromeet.android.login.presenter.PopupPresenter;
 import com.depromeet.android.main.view.MainActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class PopupActivity extends Activity
         implements PopupContract.View {
-    private static final String TAG = "popupactivity";
+
+    @BindView(R.id.createBook)
+    TextView createBook;
+    @BindView(R.id.createLink)
+    TextView createLink;
+
     private PopupPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -35,41 +45,22 @@ public class PopupActivity extends Activity
         getWindow().setAttributes(layoutParams);
 
         setContentView(R.layout.activity_popup);
-
-        TextView createBook = (TextView) findViewById(R.id.createBook);
-        TextView createLink = (TextView) findViewById(R.id.createLink);
-
-        final Intent mainActivity = new Intent(this, MainActivity.class);
+        ButterKnife.bind(this);
 
         presenter = new PopupPresenter();
         presenter.attachView(this);
-
-        createBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //saveAccount
-
-                startActivity(mainActivity);
-            }
-        });
-
-        createLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.shareLink();
-
-            }
-        });
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
-        if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-            return false;
-        }
-        return true;
+    @OnClick(R.id.createBook)
+    public void onCreateBookClick() {
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        startActivity(mainActivity);
+        finish();
+    }
+
+    @OnClick(R.id.createLink)
+    public void onCreateLinkClick() {
+        presenter.shareLink();
     }
 
     @Override
@@ -118,7 +109,5 @@ public class PopupActivity extends Activity
     public Context getActivityContext() {
         return this;
     }
-
-
 }
 

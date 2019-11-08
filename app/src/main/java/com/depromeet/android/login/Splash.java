@@ -47,6 +47,7 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(onBoardingActivity);
+                finish();
             }
         }, 3000);
     }

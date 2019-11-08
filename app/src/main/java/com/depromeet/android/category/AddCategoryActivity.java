@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AddCategoryActivity extends AppCompatActivity {
 
@@ -101,19 +102,11 @@ public class AddCategoryActivity extends AppCompatActivity {
             }
         });
 
-        addCategoryBackBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mainActivity = new Intent(AddCategoryActivity.this, MainActivity.class);
-                startActivity(mainActivity);
-            }
-        });
         addCategorySaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //data값들 서버로 보내기
-                Intent mainActivity = new Intent(AddCategoryActivity.this, MainActivity.class);
-                startActivity(mainActivity);
+
             }
         });
 
@@ -135,4 +128,8 @@ public class AddCategoryActivity extends AppCompatActivity {
 
     }
 
+    @OnClick(R.id.addCategoryBackBtn)
+    public void onBackBtnClick() {
+        finish();
+    }
 }

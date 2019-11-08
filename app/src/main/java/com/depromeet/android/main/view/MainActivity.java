@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.depromeet.android.R;
+import com.depromeet.android.category.AddCategoryActivity;
 import com.depromeet.android.data.Category;
 import com.depromeet.android.feedpage.FeedPageActivity;
 import com.depromeet.android.input.InputActivity;
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void startAddCategoryActivity() {
-        toast("카테고리 추가 액티비티 실행");
+        Intent intent = new Intent(this, AddCategoryActivity.class);
+        startActivity(intent);
     }
 }

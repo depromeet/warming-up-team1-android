@@ -79,9 +79,7 @@ public class FeedPageActivity extends AppCompatActivity {
         feedpageBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent mainActivity = new Intent(FeedPageActivity.this, MainActivity.class);
-                startActivity(mainActivity);
+                finish();
             }
         });
     }

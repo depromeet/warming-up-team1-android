@@ -53,7 +53,7 @@ public class OnboardingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(loginActivity);
-
+                finish();
             }
         });
     }
