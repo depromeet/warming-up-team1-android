@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BabyPay</string>
+    <string name="app_name">티끌모아육아</string>
 
     <string name="onboarding_title">육아에 바쁜 당신을 위한 가계부</string>
     <string name="onboarding_subTitle">정신없는 육아에 항상 시간이 부족한 나, \n
@@ -11,6 +11,9 @@
     <string name="main_outcome">소비</string>
     <string name="main_income">수입</string>
     <string name="main_balance">잔액</string>
+
+    <string name="income_input">수입 금액 입력</string>
+    <string name="outcome_input">지출 금액 입력</string>
 
     <string name="angle_bracket_left">&lt;</string>
     <string name="angle_bracket_right">&gt;</string>

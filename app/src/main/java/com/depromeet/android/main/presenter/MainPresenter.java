@@ -1,12 +1,11 @@
 package com.depromeet.android.main.presenter;
 
-import android.print.PrinterId;
-
-import com.depromeet.android.data.Category;
 import com.depromeet.android.main.adapter.MainAdapterContract;
 import com.depromeet.android.main.adapter.OnItemClickListener;
+import com.depromeet.android.main.adapter.OnItemDragEnterListener;
 
-public class MainPresenter implements MainContract.Presenter, OnItemClickListener {
+public class MainPresenter implements MainContract.Presenter,
+        OnItemDragEnterListener, OnItemClickListener {
     private MainContract.View view;
     private MainAdapterContract.View adapterView;
     private MainAdapterContract.Model adapterModel;
@@ -33,6 +32,7 @@ public class MainPresenter implements MainContract.Presenter, OnItemClickListene
     public void setMainAdapterView(MainAdapterContract.View adapterView) {
         this.adapterView = adapterView;
         this.adapterView.setOnClickListener(this);
+        this.adapterView.setOnDragEnterListener(this);
     }
 
     @Override
@@ -41,7 +41,12 @@ public class MainPresenter implements MainContract.Presenter, OnItemClickListene
     }
 
     @Override
-    public void onItemClick(Category category) {
-        view.startInputActivity(category);
+    public void onItemDragResult() {
+        view.startInputActivity();
+    }
+
+    @Override
+    public void onItemClick() {
+        view.startAddCategoryActivity();
     }
 }

@@ -5,30 +5,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/category_item"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="false"
+    android:contextClickable="false"
+    android:longClickable="false">
 
     <TextView
         android:id="@+id/category_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:clickable="false"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="2sp"
-        android:text="식비"
+        tools:text="식비"
         android:textColor="#404040"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <FrameLayout
+    <ImageView
         android:id="@+id/category_icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/parenting_category_icon"
+        tools:background="@drawable/parenting_category_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_title"/>
@@ -41,7 +45,7 @@
         android:layout_marginBottom="8dp"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="2sp"
-        android:text="118,000"
+        tools:text="118,000"
         android:textColor="#ffc300"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"

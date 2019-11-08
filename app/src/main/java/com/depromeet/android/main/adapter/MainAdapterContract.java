@@ -6,6 +6,7 @@ public interface MainAdapterContract {
     interface View {
         void notifyAdapter();
         void setOnClickListener(OnItemClickListener onClickListener);
+        void setOnDragEnterListener(OnItemDragEnterListener onDragEnterListener);
     }
 
     interface Model {

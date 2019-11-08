@@ -63,5 +63,8 @@ dependencies {
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    //계산기 관련
+    implementation files('libs/javaluator-3.0.1.jar')
 }
 apply plugin: 'com.google.gms.google-services'
