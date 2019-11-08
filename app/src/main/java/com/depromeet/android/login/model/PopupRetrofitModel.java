@@ -24,7 +24,6 @@ public class PopupRetrofitModel {
     public void getConnectKey(String userToken, int mid) {
         Call<String> call = retrofitService.getConnectKey("Bearer "+userToken, mid);
         call.enqueue(new Callback<String>() {
-
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if (response.code() == ResponseCode.UNAUTHORIZED) {
@@ -49,5 +48,9 @@ public class PopupRetrofitModel {
             }
         });
     }
+
+    public void  createAccount(String userToken, String connectId, int budget,int month){
+    }
+
 
 }

@@ -2,8 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
@@ -17,7 +18,7 @@
 
         <ImageView
             android:id="@+id/feedPage2Left"
-            android:layout_width="18dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:src="@drawable/feedpage36" />
@@ -28,16 +29,16 @@
             android:layout_height="19dp"
             android:layout_marginLeft="33dp"
             android:layout_marginRight="33dp"
+            android:autoSizeTextType="uniform"
             android:fontFamily="@font/nanumbarungothic"
             android:lineSpacingExtra="3sp"
             android:text="2019년ㆍ10월"
             android:textColor="#000000"
-            android:textSize="16sp"
-            android:autoSizeTextType="uniform"/>
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/feedPage2Right"
-            android:layout_width="18dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
             android:padding="5dp"
             android:src="@drawable/feedpage37" />
@@ -49,18 +50,19 @@
         android:id="@+id/recyclerview_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:scrollbarStyle="outsideInset"
         android:scrollbarThumbVertical="@android:color/transparent"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-        app:layout_constraintVertical_weight="9"
 
-        android:scrollbarStyle="outsideInset"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_weight="9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
