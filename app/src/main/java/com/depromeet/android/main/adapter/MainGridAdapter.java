@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 
 import com.depromeet.android.R;
 import com.depromeet.android.data.Category;
+import com.depromeet.android.data.CategorySetIcon;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class MainGridAdapter extends BaseAdapter
 
     private ArrayList<Category> items;
     private final Context context;
+    private OnItemDragEnterListener itemDragEnterListener;
     private OnItemClickListener itemClickListener;
 
     public MainGridAdapter(Context context) {
@@ -45,7 +47,7 @@ public class MainGridAdapter extends BaseAdapter
 
         if(view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_main, null);
-            holder = new MainGridViewHolder(view, context, itemClickListener);
+            holder = new MainGridViewHolder(view, context, itemDragEnterListener, itemClickListener);
             view.setTag(holder);
         } else {
             holder = (MainGridViewHolder) view.getTag();
@@ -63,6 +65,11 @@ public class MainGridAdapter extends BaseAdapter
     @Override
     public void setOnClickListener(OnItemClickListener onClickListener) {
         this.itemClickListener = onClickListener;
+    }
+
+    @Override
+    public void setOnDragEnterListener(OnItemDragEnterListener onDragEnterListener) {
+        this.itemDragEnterListener = onDragEnterListener;
     }
 
     @Override
