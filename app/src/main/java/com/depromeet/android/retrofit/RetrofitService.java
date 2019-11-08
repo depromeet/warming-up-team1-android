@@ -16,15 +16,20 @@ public interface RetrofitService {
 
     @POST("/api/members/login")
     Call<ResponseAuth> login(
-        @Body JsonObject kakaoToken
+            @Body JsonObject kakaoToken
     );
 
     @GET("/api/members/connect-key/{mid}")
     Call<String> getConnectKey(@Header("authorization") String Authorization,
-                                          @Path("mid") int mid);
+                               @Path("mid") int mid);
 
     @PUT("/api/members/connect/{mid}/{key}")
     Call<ResponseConnectMem> connectMem(@Header("authorization") String Authorization
-                                         ,@Path("mid")int mid,@Path("key") String connectKey);
+            , @Path("mid") int mid, @Path("key") String connectKey);
+
+
+    @POST("/api/accounts")
+    Call<ResponseAuth> saveAccount(@Header("authorization") String Authorization,@Path("connectId") String connectId, @Body JsonObject account
+    );
 
 }
