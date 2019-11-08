@@ -7,8 +7,9 @@ public class PreferenceUtils {
 
     private static final String KEY_KAKAO_TOKEN = "kakaoToken";
     private static final String KEY_SERVER_JWT_TOKEN = "serverJwtToken";
-
+    private static final String KEY_MID = "mid";
     private static Context mAppContext;
+    private static final String templateId = "18924";
 
     // Prevent instantiation
     private PreferenceUtils() {
@@ -38,5 +39,18 @@ public class PreferenceUtils {
 
     public static String getJwtToken() {
         return getSharedPreferences().getString(KEY_SERVER_JWT_TOKEN, "");
+    }
+
+    public static void setMid(int mid) {
+        SharedPreferences.Editor editor = getSharedPreferences().edit();
+        editor.putInt(KEY_MID, mid).apply();
+    }
+
+    public static int getMid() {
+        return getSharedPreferences().getInt(KEY_MID, 0);
+    }
+
+    public static String getTemplateId() {
+        return templateId;
     }
 }

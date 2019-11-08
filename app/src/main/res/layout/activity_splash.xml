@@ -7,7 +7,18 @@
     android:background="@color/mainColor"
     android:orientation="vertical"
     tools:context=".login.Splash">
+    <!--
 
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+       />
+       -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -16,6 +27,7 @@
         app:layout_constraintGuide_percent="0.37" />
 
     <ImageView
+        android:id="@+id/icon"
         android:layout_width="113.4dp"
         android:layout_height="104.3dp"
         android:layout_gravity="center_horizontal"

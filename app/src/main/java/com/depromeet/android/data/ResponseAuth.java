@@ -8,9 +8,18 @@ public class ResponseAuth {
     @SerializedName("jwtToken")
     @Expose
     private String jwtToken;
+
     @SerializedName("refreshToken")
     @Expose
     private String refreshToken;
+
+    @SerializedName("mid")
+    @Expose
+    private int mid;
+
+    public int getMid() {
+        return mid;
+    }
 
     public String getJwtToken() {
         return jwtToken;

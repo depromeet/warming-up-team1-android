@@ -19,13 +19,20 @@ public class LoginPresenter
 
     @Override
     public void login() {
+        //retrofit
         String kakaoToken = PreferenceUtils.getKakaoToken();
         retrofitModel.login(kakaoToken);
+    }
+    @Override
+    public void connect(String connectKey) {
+        String jwtToken = PreferenceUtils.getJwtToken();
+        int mid = PreferenceUtils.getMid();
+        retrofitModel.connect(jwtToken, mid, connectKey);
     }
 
     @Override
     public void onSuccess(int code, ResponseAuth responseAuth) {
-        if(code == ResponseCode.UNAUTHORIZED) {
+        if (code == ResponseCode.UNAUTHORIZED) {
             view.onUnauthorizedError();
             return;
         }
@@ -42,6 +49,7 @@ public class LoginPresenter
 
         if (code == ResponseCode.OK) {
             PreferenceUtils.setJwtToken(responseAuth.getJwtToken());
+            PreferenceUtils.setMid(responseAuth.getMid());
             view.startMainActivity(code);
             return;
         }

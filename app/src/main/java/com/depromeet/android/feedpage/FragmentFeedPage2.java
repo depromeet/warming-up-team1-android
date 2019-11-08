@@ -52,11 +52,7 @@ public class FragmentFeedPage2 extends Fragment {
                 mLinearLayoutManager.getOrientation());
         mRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        //예시 데이터
-        Feedpage2Item data = new Feedpage2Item("19.10.11", "음식", 15000);
-        Feedpage2Item data2 = new Feedpage2Item("19.10.11", "음식", 15000);
-        mArrayList.add(data); // RecyclerView의 마지막 줄에 삽입
-        mArrayList.add(data2); // RecyclerView의 마지막 줄에 삽입
+        getData();
         mAdapter.notifyDataSetChanged();
 
         leftBtn.setOnClickListener(Listener);
@@ -92,5 +88,31 @@ public class FragmentFeedPage2 extends Fragment {
         }
     };
 
+    private void getData() {
+        //response값 넣어야 함
+        //예시 데이터
+        Feedpage2Item data = new Feedpage2Item("19.10.17", "식비", R.drawable.feedpage452,-15000);
+        Feedpage2Item data2 = new Feedpage2Item("19.10.22", "교통비",R.drawable.feedpage444, -35000);
+        Feedpage2Item data3 = new Feedpage2Item("19.10.23", "육아",R.drawable.feedpage441, -50000);
+        Feedpage2Item data4 = new Feedpage2Item("19.10.23", "경조사", R.drawable.feedpage460,+25000);
+        Feedpage2Item data5 = new Feedpage2Item("19.10.25", "육아",R.drawable.feedpage441, -13000);
+        Feedpage2Item data6 = new Feedpage2Item("19.10.25", "식비", R.drawable.feedpage452,-15000);
+        Feedpage2Item data7 = new Feedpage2Item("19.10.26", "식비", R.drawable.feedpage452,-30000);
+        Feedpage2Item data8 = new Feedpage2Item("19.10.27", "육아",R.drawable.feedpage441, -5000);
+        Feedpage2Item data9 = new Feedpage2Item("19.10.28", "문화생활", R.drawable.feedpage442,-25000);
+        Feedpage2Item data10 = new Feedpage2Item("19.10.29", "육아",R.drawable.feedpage441, -103000);
+        mArrayList.add(data);
+        mArrayList.add(data2);
+        mArrayList.add(data3);
+        mArrayList.add(data4);
+        mArrayList.add(data5);
+        mArrayList.add(data6);
+        mArrayList.add(data7);
+        mArrayList.add(data8);
+        mArrayList.add(data9);
+        mArrayList.add(data10);
+
+
+    }
 
 }

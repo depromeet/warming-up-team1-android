@@ -25,4 +25,7 @@
     <string name="feedpage_list">세부내역</string>
 
     <string name="feedpage_frag1_graph">월별 수입&amp;지출 추이</string>
+
+    <string name="addcategroy_title">카테고리추가</string>
+    <string name="addcategory_selectIcon">아이콘을 선택해주세요.</string>
 </resources>

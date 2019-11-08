@@ -20,34 +20,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/feedItemIcon"
+        android:layout_width="16.2dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/feedpage442"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/feedItemCategory"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/feedItemCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="97dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/feedItemMoney"
-        app:layout_constraintStart_toEndOf="@+id/feedItemDate"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/feedItemIcon"
-            android:layout_width="16.2dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/feedpage442" />
-
-        <TextView
-            android:id="@+id/feedItemCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:lineSpacingExtra="3sp"
-            android:text="문화생활"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+        android:lineSpacingExtra="3sp"
+        android:text="문화생활"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/feedItemMoney"
@@ -62,4 +56,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,12 @@
 package com.depromeet.android.login;
-import android.app.Activity;
 import android.content.Context;
-import com.kakao.auth.*;
+
+import com.kakao.auth.ApprovalType;
+import com.kakao.auth.AuthType;
+import com.kakao.auth.IApplicationConfig;
+import com.kakao.auth.IPushConfig;
+import com.kakao.auth.ISessionConfig;
+import com.kakao.auth.KakaoAdapter;
 
 public class KakaoSDKAdapter extends KakaoAdapter {
     /**
@@ -12,7 +17,7 @@ public class KakaoSDKAdapter extends KakaoAdapter {
         return new ISessionConfig() {
             @Override
             public AuthType[] getAuthTypes() {
-                return new AuthType[]{AuthType.KAKAO_ACCOUNT};
+                return new AuthType[]{AuthType.KAKAO_LOGIN_ALL};
             }
 
             @Override

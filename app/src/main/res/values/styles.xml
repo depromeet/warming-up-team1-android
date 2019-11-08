@@ -18,5 +18,10 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
-
+    <style name="EditTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#ebebeb</item>
+        <item name="colorControlNormal">#ebebeb</item>
+        <item name="colorControlActivated">#ebebeb</item>
+        <item name="colorControlHighlight">#ebebeb</item>
+    </style>
 </resources>
