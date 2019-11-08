@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/input_background"
-    tools:context="">
+    tools:context=".input.InputActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/upload_activity_toolbar"
+        android:id="@+id/input_activity_toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#ffffff"
@@ -44,7 +44,7 @@
             app:srcCompat="@drawable/check_act_icon"/>
 
         <TextView
-            android:id="@+id/main_title"
+            android:id="@+id/input_title"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center_vertical"
@@ -91,247 +91,226 @@
             app:layout_constraintGuide_percent="0.5"/>
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/cal_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cal_percent_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/calcul_back_btn"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/cal_percent_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.77"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/calcul_percent_btn"/>
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/cal_div_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton4"
-            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/calcul_div_btn"/>
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/cal_multi_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cal_div_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/calcul_multi_btn"/>
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/cal_1_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton"
+            app:layout_constraintEnd_toStartOf="@+id/cal_2_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_back_btn"
             app:srcCompat="@drawable/calcul_1"/>
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/cal_2_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.77"
-            app:layout_constraintStart_toEndOf="@+id/imageButton5"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+            app:layout_constraintTop_toBottomOf="@+id/cal_percent_btn"
             app:srcCompat="@drawable/calcul_2"/>
 
         <ImageButton
-            android:id="@+id/imageButton7"
+            android:id="@+id/cal_3_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton8"
-            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+            app:layout_constraintTop_toBottomOf="@+id/cal_div_btn"
             app:srcCompat="@drawable/calcul_3"/>
 
         <ImageButton
-            android:id="@+id/imageButton8"
+            android:id="@+id/cal_sub_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+            app:layout_constraintStart_toEndOf="@+id/cal_3_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_multi_btn"
             app:srcCompat="@drawable/calcul_sub_btn"/>
 
         <ImageButton
-            android:id="@+id/imageButton9"
+            android:id="@+id/cal_4_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton5"
+            app:layout_constraintEnd_toStartOf="@+id/cal_5_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_1_btn"
             app:srcCompat="@drawable/calcul_4"/>
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/cal_5_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.77"
-            app:layout_constraintStart_toEndOf="@+id/imageButton9"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton6"
+            app:layout_constraintTop_toBottomOf="@+id/cal_2_btn"
             app:srcCompat="@drawable/calcul_5"/>
 
         <ImageButton
-            android:id="@+id/imageButton11"
+            android:id="@+id/cal_6_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton12"
-            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton7"
+            app:layout_constraintTop_toBottomOf="@+id/cal_3_btn"
             app:srcCompat="@drawable/calcul_6"/>
 
         <ImageButton
-            android:id="@+id/imageButton12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton8"
-            app:srcCompat="@drawable/calcul_add_btn"/>
-
-        <ImageButton
-            android:id="@+id/imageButton13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
-            android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton12"
-            app:srcCompat="@drawable/calcul_equal_btn"/>
-
-        <ImageButton
-            android:id="@+id/imageButton14"
+            android:id="@+id/cal_add_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:background="@android:color/transparent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton9"
+            app:layout_constraintStart_toEndOf="@+id/cal_6_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_sub_btn"
+            app:srcCompat="@drawable/calcul_add_btn"/>
+
+        <ImageButton
+            android:id="@+id/cal_equal_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cal_9_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_add_btn"
+            app:srcCompat="@drawable/calcul_equal_btn"/>
+
+        <ImageButton
+            android:id="@+id/cal_7_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toStartOf="@+id/cal_8_btn"
+            app:layout_constraintTop_toBottomOf="@+id/cal_4_btn"
             app:srcCompat="@drawable/calcul_7"/>
 
         <ImageButton
-            android:id="@+id/imageButton15"
+            android:id="@+id/cal_8_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
-            app:layout_constraintHorizontal_bias="0.77"
-            app:layout_constraintStart_toEndOf="@+id/imageButton14"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton10"
+            app:layout_constraintTop_toBottomOf="@+id/cal_5_btn"
             app:srcCompat="@drawable/calcul_8"/>
 
         <ImageButton
-            android:id="@+id/imageButton16"
+            android:id="@+id/cal_9_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton13"
-            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton11"
+            app:layout_constraintTop_toBottomOf="@+id/cal_6_btn"
             app:srcCompat="@drawable/calcul_9"/>
 
         <ImageButton
-            android:id="@+id/imageButton17"
+            android:id="@+id/cal_000_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton14"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/cal_7_btn"
             app:srcCompat="@drawable/calcul_000"/>
 
         <ImageButton
-            android:id="@+id/imageButton18"
+            android:id="@+id/cal_0_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton13"
-            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton16"
+            app:layout_constraintTop_toBottomOf="@+id/cal_9_btn"
             app:srcCompat="@drawable/calcul_0"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/cal_text"
+        android:layout_width="0dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:text="100,000"
+        android:autoSizeMaxTextSize="42sp"
+        android:autoSizeMinTextSize="24sp"
+        android:autoSizeTextType="uniform"
+        android:gravity="bottom|right"
+        android:hint="0"
         android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"/>
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

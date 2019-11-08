@@ -9,18 +9,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.depromeet.android.main.adapter.OnItemDragEnterListener;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class DragDropOnDragListener implements View.OnDragListener {
 
     private Context context;
 
+    private OnItemDragEnterListener itemClickListener;
+
     View beforeView;
     ViewGroup beforeViewGroup;
     ViewGroup beforeNewParent;
 
-    public DragDropOnDragListener(Context context) {
+    public DragDropOnDragListener(Context context, OnItemDragEnterListener itemClickListener) {
         this.context = context;
+        this.itemClickListener = itemClickListener;
     }
 
     @Override
@@ -58,7 +63,7 @@ public class DragDropOnDragListener implements View.OnDragListener {
 
             // result is true means drag and drop action success.
             if (result) {
-                //Toast.makeText(context, "Drag and drop action complete successfully.", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Drag and drop action complete successfully.", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(context, "Drag and drop action failed.", Toast.LENGTH_LONG).show();
             }
@@ -146,6 +151,12 @@ public class DragDropOnDragListener implements View.OnDragListener {
          * */
         //view.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         // Redraw the target view use new color.
         view.invalidate();
     }
