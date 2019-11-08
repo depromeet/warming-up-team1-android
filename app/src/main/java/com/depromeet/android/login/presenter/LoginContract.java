@@ -14,5 +14,6 @@ public interface LoginContract {
         void attachView(View view);
         void detachView();
         void login();
+        void connect(String connectKey);
     }
 }

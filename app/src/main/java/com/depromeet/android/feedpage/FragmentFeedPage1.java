@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.depromeet.android.R;
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -21,20 +22,24 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import static com.depromeet.android.feedpage.FeedPage2Adapter.getFormatDEC;
+
 public class FragmentFeedPage1 extends Fragment {
     View view;
+    final String[] MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_feed_page1, container, false);
 
         BarChart chart = (BarChart) view.findViewById(R.id.chart);
-        RoundedBarChartRenderer roundedBarChartRenderer= new RoundedBarChartRenderer(chart,chart.getAnimator(),chart.getViewPortHandler());
+        RoundedBarChartRenderer roundedBarChartRenderer = new RoundedBarChartRenderer(chart, chart.getAnimator(), chart.getViewPortHandler());
         roundedBarChartRenderer.setmRadius(50f);
         chart.setRenderer(roundedBarChartRenderer);
 
@@ -43,8 +48,8 @@ public class FragmentFeedPage1 extends Fragment {
         chart.setData(data);
         chart.getDescription().setEnabled(false);
         chart.setGridBackgroundColor(Color.WHITE);
-        chart.animateXY(1500, 1500);
-
+       // chart.animateXY(1500, 1500);
+        chart.animateY(3000, Easing.EaseOutBack);
         YAxis yAxisLeft = chart.getAxisLeft();
         yAxisLeft.setEnabled(false);
         yAxisLeft.setLabelCount(4);
@@ -64,7 +69,10 @@ public class FragmentFeedPage1 extends Fragment {
         xAxis.setDrawLabels(true); // 라벨(x축 좌표)를 그릴지 결정
         xAxis.setDrawGridLines(false);
 
-        String[] months = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
+        int xAxisSize = data.getEntryCount()/2;
+
+        String[] months = Arrays.copyOf(MONTHS,xAxisSize);
+
         xAxis.setValueFormatter(new IndexAxisValueFormatter(months));
         xAxis.setCenterAxisLabels(true);
         xAxis.setGranularity(1);
@@ -90,13 +98,10 @@ public class FragmentFeedPage1 extends Fragment {
         data.setBarWidth(barWidth); // set the width of each bar
 
         chart.setDragEnabled(true);
-        chart.setVisibleXRangeMaximum(5);
+        chart.setVisibleXRangeMaximum(xAxisSize/2);
         chart.setExtraBottomOffset(5);
-
         xAxis.setAxisMinimum(0);
-        xAxis.setAxisMaximum(0 + chart.getBarData().getGroupWidth(groupSpace, barSpace) * 12);
-
-
+        xAxis.setAxisMaximum(0 + chart.getBarData().getGroupWidth(groupSpace, barSpace) * xAxisSize);
 
         chart.groupBars(0, groupSpace, barSpace);
         chart.invalidate();
@@ -107,20 +112,20 @@ public class FragmentFeedPage1 extends Fragment {
             public void onValueSelected(Entry entry, Highlight highlight) {
                 String type;
                 float getX = entry.getX();
-                float getY =  entry.getY();
+                float getY = entry.getY();
 
                 int month = (int) getX; //월
                 int typeValue = Math.round(getX); // 반 올림했을 때 month랑 같으면 소비, 다르면 소득차트임
-                if(typeValue == month)
-                    type="소비";
+                if (typeValue == month)
+                    type = "소비";
                 else
-                    type="소득";
+                    type = "소득";
 
                 Log.d("fragment1", String.valueOf(getX));
                 Log.d("fragment1", String.valueOf(typeValue));
 
 
-                ((FeedPageActivity) getActivity()).changeTotal(String.valueOf(month+1), String.valueOf(getY),type);
+                ((FeedPageActivity) getActivity()).changeTotal(String.valueOf(month + 1), getFormatDEC((int)getY*100), type);
 
 
             }
@@ -139,18 +144,23 @@ public class FragmentFeedPage1 extends Fragment {
         ArrayList<BarEntry> valueSet1 = new ArrayList<>();
         ArrayList<BarEntry> valueSet2 = new ArrayList<>();
 
-        for (int i = 1; i <= 12; i++) {
-            BarEntry v1e1 = new BarEntry(i, 50.00f + i * 10);
+        //예시 data
+        float testData[]={0.0f,50.0f,60.0f,55.0f,40.0f,70.0f,66.0f,58.0f,80.0f,44.0f,58.0f,75.0f};
+        for (int i = 1; i <= 10; i++) {
+            BarEntry v1e1 = new BarEntry(i, 200.00f - testData[i]);
             valueSet1.add(v1e1);
-            BarEntry v2e1 = new BarEntry(i, 200.00f - i * 10);
+            BarEntry v2e1 = new BarEntry(i, 200.00f  - testData[i] - 10.0f );
+
             valueSet2.add(v2e1);
         }
-
         BarDataSet barDataSet1 = new BarDataSet(valueSet1, "소비");
         barDataSet1.setColor(Color.rgb(254, 235, 50));
 
         BarDataSet barDataSet2 = new BarDataSet(valueSet2, "소득");
         barDataSet2.setColor(Color.rgb(177, 177, 177));
+
+        barDataSet1.setHighLightAlpha(0);
+        barDataSet2.setHighLightAlpha(0);
 
         dataSets = new ArrayList<>();
         dataSets.add(barDataSet1);

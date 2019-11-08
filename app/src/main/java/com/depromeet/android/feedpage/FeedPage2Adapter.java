@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import com.depromeet.android.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FeedPage2Adapter  extends RecyclerView.Adapter<FeedPage2Adapter.CustomViewHolder> {
+public class FeedPage2Adapter extends RecyclerView.Adapter<FeedPage2Adapter.CustomViewHolder> {
 
     private ArrayList<Feedpage2Item> mList;
 
@@ -43,9 +44,8 @@ public class FeedPage2Adapter  extends RecyclerView.Adapter<FeedPage2Adapter.Cus
     }
 
 
-
     @Override
-    public  CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.feedpage2_itemlist, viewGroup, false);
@@ -58,7 +58,7 @@ public class FeedPage2Adapter  extends RecyclerView.Adapter<FeedPage2Adapter.Cus
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder viewholder, int position) {
 
-        if(mList.get(position).getMoney()<0)
+        if (mList.get(position).getMoney() < 0)
             viewholder.money.setTextColor(Color.RED);
         else
             viewholder.money.setTextColor(Color.BLUE);
@@ -70,8 +70,14 @@ public class FeedPage2Adapter  extends RecyclerView.Adapter<FeedPage2Adapter.Cus
 
         viewholder.date.setText(mList.get(position).getDate());
         viewholder.category.setText(mList.get(position).getCategory());
-        viewholder.icon.setImageResource(R.drawable.feedpage452); //아이콘 바꾸기
-        viewholder.money.setText("+"+String.valueOf(mList.get(position).getMoney())+"원");
+        viewholder.icon.setImageResource(mList.get(position).getIcon()); //아이콘 바꾸기
+        int money = mList.get(position).getMoney();
+
+        String moneyStr = getFormatDEC(money) + "원";
+        if (money > 0)
+            moneyStr = "+" + moneyStr;
+
+        viewholder.money.setText(moneyStr);
     }
 
     @Override
@@ -79,4 +85,12 @@ public class FeedPage2Adapter  extends RecyclerView.Adapter<FeedPage2Adapter.Cus
         return (null != mList ? mList.size() : 0);
     }
 
+    public static String getFormatDEC(int num) {
+        String number = String.valueOf(num);
+        DecimalFormat dec = new DecimalFormat("##,###,###");
+        if (!number.trim().equals("")) {
+            number = dec.format(Long.valueOf(number));
+        }
+        return number;
+    }
 }

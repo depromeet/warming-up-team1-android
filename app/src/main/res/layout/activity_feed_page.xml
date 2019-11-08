@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/feedpageBackBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -42,19 +42,19 @@
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/feedpageBackBtn"
             app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="203dp"
         android:background="@color/mainColor"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0">
@@ -75,13 +75,13 @@
             android:layout_height="25dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:autoSizeTextType="uniform"
             android:fontFamily="@font/nanumbarungothic"
             android:text="2019년 10월"
             android:textColor="#000000"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:autoSizeTextType="uniform" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/feedpageTotal2"
@@ -169,12 +169,12 @@
                 android:id="@+id/feedpageIncome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="2sp"
                 android:text="100,5000원"
                 android:textColor="#313131"
-                android:textSize="14sp"
-                android:layout_marginRight="16dp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -216,7 +216,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_begin="196dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

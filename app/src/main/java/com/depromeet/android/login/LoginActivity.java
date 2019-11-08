@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.depromeet.android.R;
 import com.depromeet.android.login.presenter.LoginContract;
 import com.depromeet.android.login.presenter.LoginPresenter;
@@ -26,6 +28,9 @@ import com.kakao.util.exception.KakaoException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     private LinearLayout btn_custom_login;
@@ -35,22 +40,30 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     private String getLinkKey;
 
     private LoginPresenter presenter;
+    @BindView(R.id.icon)
+    ImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
+
         btn_custom_login = (LinearLayout) findViewById(R.id.btn_custom_login);
         btn_kakao_login = (LoginButton) findViewById(R.id.btn_kakao_login);
 
+        Glide.with(this).load(R.raw.gificon).into(icon);
+
         Intent intent = getIntent();
         getLinkKey = intent.getExtras().getString("check", "");      //인증 key값
-
+        Log.d("linkkey!!",getLinkKey);
         kakaoData();
         btn_custom_login.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+
+              //onClickLogout();
                btn_kakao_login.performClick();
             }
 
@@ -99,6 +112,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
             Intent popupActivity = new Intent(LoginActivity.this, PopupActivity.class);
             startActivity(popupActivity);
         } else {
+            //connect member하기!!
+            presenter.connect(getLinkKey);
             Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
             mainActivity.putExtra("check",getLinkKey);
             startActivity(mainActivity);

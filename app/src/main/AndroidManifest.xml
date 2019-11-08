@@ -3,6 +3,7 @@
     package="com.depromeet.android">
     <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".login.GlobalApplication"
         android:allowBackup="true"
@@ -12,14 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feedpage.FeedPageActivity"/>
+        <activity android:name=".category.AddCategoryActivity">
+
+        </activity>
+        <activity android:name=".feedpage.FeedPageActivity">
+
+        </activity>
         <activity
             android:name=".login.PopupActivity"
-            android:theme="@android:style/Theme.Dialog">
-        </activity>
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".login.OnboardingActivity" />
         <activity android:name=".login.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -30,7 +39,6 @@
                     android:host="@string/kakaolink_host"
                     android:scheme="@string/kakao_scheme" />
             </intent-filter>
-
         </activity>
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".input.InputActivity" />
@@ -40,4 +48,5 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
     </application>
+
 </manifest>

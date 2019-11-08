@@ -1,10 +1,13 @@
 package com.depromeet.android.feedpage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.depromeet.android.R;
+import com.depromeet.android.main.view.MainActivity;
 
 import java.util.Calendar;
 
@@ -31,6 +34,8 @@ public class FeedPageActivity extends AppCompatActivity {
     @BindView(R.id.feedpageTotal3)
     TextView feedPageTotalType;
 
+    @BindView(R.id.feedpageBackBtn)
+    ImageView feedpageBackBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +46,9 @@ public class FeedPageActivity extends AppCompatActivity {
 
         fragment1 = new FragmentFeedPage1();
         fragment2 = new FragmentFeedPage2();
-        changeTotal("11","32,000","소비");
+
+        //예시 data
+        changeTotal("10","32,000","소비");
 
         transaction = fragmentManager.beginTransaction();
 
@@ -69,7 +76,14 @@ public class FeedPageActivity extends AppCompatActivity {
                 feedPageBtn2.setBackgroundResource(R.color.mainColor);
             }
         });
+        feedpageBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent mainActivity = new Intent(FeedPageActivity.this, MainActivity.class);
+                startActivity(mainActivity);
+            }
+        });
     }
 
     public void changeTotal(String month, String value,String type) {

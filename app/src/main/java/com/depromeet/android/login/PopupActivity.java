@@ -1,32 +1,27 @@
 package com.depromeet.android.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.depromeet.android.R;
+import com.depromeet.android.login.presenter.PopupContract;
+import com.depromeet.android.login.presenter.PopupPresenter;
 import com.depromeet.android.main.view.MainActivity;
-import com.kakao.kakaolink.v2.KakaoLinkResponse;
-import com.kakao.kakaolink.v2.KakaoLinkService;
-import com.kakao.network.ErrorResult;
-import com.kakao.network.callback.ResponseCallback;
 
-import java.util.HashMap;
-import java.util.Map;
 
-public class PopupActivity extends Activity {
+public class PopupActivity extends Activity
+        implements PopupContract.View {
     private static final String TAG = "popupactivity";
-
-    private ResponseCallback<KakaoLinkResponse> callback;
-    private Map<String, String> serverCallbackArgs = null;
-    private String checkKey;
+    private PopupPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +41,8 @@ public class PopupActivity extends Activity {
 
         final Intent mainActivity = new Intent(this, MainActivity.class);
 
+        presenter = new PopupPresenter();
+        presenter.attachView(this);
 
         createBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,33 +54,11 @@ public class PopupActivity extends Activity {
         createLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shareLink();
+                presenter.shareLink();
+
             }
         });
-
-
-        callback = new ResponseCallback<KakaoLinkResponse>() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                Log.d(TAG, errorResult.getErrorMessage());
-            }
-
-            @Override
-            public void onSuccess(KakaoLinkResponse result) {
-                Log.d(TAG, "Successfully sent KakaoLink v2 message.");
-            }
-        };
     }
-
-    private void shareLink() {
-        String templateId = "18924";
-
-        Map<String, String> templateArgs = new HashMap<>();
-        templateArgs.put("description", "티끌모아육아, 공유해요!");
-        templateArgs.put("check", checkKey); // key값 넣기
-        KakaoLinkService.getInstance().sendCustom(this, templateId, templateArgs, serverCallbackArgs, callback);
-    }
-
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -99,6 +74,48 @@ public class PopupActivity extends Activity {
         //안드로이드 백버튼 막기
         return;
     }
+
+    @Override
+    public void toast(String msg) {
+        Runnable r = () -> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        this.runOnUiThread(r);
+    }
+
+    @Override
+    public void startMainActivity(int code) {
+
+    }
+
+    @Override
+    public void onUnauthorizedError() {
+        toast("PopupActivity/server connect response : Unauthorized Error");
+    }
+
+    @Override
+    public void onForbiddenError() {
+        toast("PopupActivity/server connect response : Forbidden Error");
+    }
+
+    @Override
+    public void onNotFoundError() {
+        toast("PopupActivity/server connect response : Not Found Error");
+    }
+
+    @Override
+    public void connectFail() {
+        toast("PopupActivity/server connect response : Connect Fail");
+    }
+
+    @Override
+    public Context getAppContext() {
+        return getApplicationContext();
+    }
+
+    @Override
+    public Context getActivityContext() {
+        return this;
+    }
+
 
 }
 
